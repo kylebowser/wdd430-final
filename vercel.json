@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "installCommand": "cd wdd430-final && npm install",
+  "buildCommand": "cd wdd430-final && npm run build",
+  "outputDirectory": "wdd430-final/.next"
+}
