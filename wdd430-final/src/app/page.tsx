@@ -21,6 +21,12 @@ export default async function Page(props: { searchParams?: Promise<{ query?: str
         <p className="text-left pl-20 text-2xl font-medium text-white">
           HandCrafted Haven
         </p>
+                <Link
+          href="/create"
+          className="rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+        >
+          Create Product
+        </Link>
       </div>
 <div className="mt-4 md:mt-8 flex flex-col gap-6">
   <div className="pl-6 w-full">
