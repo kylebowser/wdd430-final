@@ -11,7 +11,11 @@ export default async function CardWrapper() {
         key={product.id}
         title={product.name}
         value={product.price}
-        type="products"
+        category={product.category}
+        description={product.description}
+        seller={product.seller}
+
+
       />
     ))}
     </>
@@ -22,11 +26,15 @@ export async function Card
 ({
   title,
   value,
-  type,
+  category,
+  description,
+  seller,
 }: {
   title: string;
-  value: number | string;
-  type: 'products';
+  value: number;
+  category: string;
+  description: string;
+  seller: string;
 }) 
 {
   // const Icon = iconMap[type];
@@ -42,6 +50,24 @@ export async function Card
           truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
       >
         {value}
+      </p>
+           <p
+        className={`${lusitana.className}
+          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
+      >
+        {category}
+      </p>
+           <p
+        className={`${lusitana.className}
+          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
+      >
+        {description}
+      </p>
+           <p
+        className={`${lusitana.className}
+          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
+      >
+        {seller}
       </p>
     </div>
   );
