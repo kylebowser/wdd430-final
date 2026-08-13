@@ -60,13 +60,13 @@ export async function createProduct(prevState: State, formData: FormData) {
   }
 
   const { name, price, description, category, seller } = validatedFields.data;
-  const amountInCents = price * 100;
+  
 
 
   try {
     await sql`
       INSERT INTO product (name, price, description, category, seller)
-      VALUES (${name}, ${amountInCents}, ${description}, ${category}, ${seller})
+      VALUES (${name}, ${price}, ${description}, ${category}, ${seller})
     `;
   } catch (error) {
     // We'll also log the error to the console for now
