@@ -41,10 +41,10 @@ export type State = {
   message?: string | null;
 };
  
-const CreateInvoice = FormSchema.omit({ id: true });
+const CreateProduct = FormSchema.omit({ id: true });
  
 export async function createProduct(prevState: State, formData: FormData) {
-  const validatedFields = CreateInvoice.safeParse({
+  const validatedFields = CreateProduct.safeParse({
     name: formData.get('name'),
     price: formData.get('price'),
     description: formData.get('description'),
@@ -61,21 +61,21 @@ export async function createProduct(prevState: State, formData: FormData) {
 
   const { name, price, description, category, seller } = validatedFields.data;
   const amountInCents = price * 100;
-  const date = new Date().toISOString().split('T')[0];
+
 
   try {
     await sql`
-      INSERT INTO invoices (name, price, description, category, seller)
+      INSERT INTO product (name, price, description, category, seller)
       VALUES (${name}, ${amountInCents}, ${description}, ${category}, ${seller})
     `;
   } catch (error) {
     // We'll also log the error to the console for now
     console.error(error);
     return {
-      message: 'Database Error: Failed to Create Invoice.',
+      message: 'Database Error: Failed to Create Product.',
     };
   }
 
   revalidatePath('/create');
-  redirect('/create');
+  redirect('/');
 }

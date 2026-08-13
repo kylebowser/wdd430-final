@@ -1,12 +1,13 @@
 import { lusitana } from '@/app/ui/fonts';
-import {fetchProducts} from '@/app/lib/data';
+import {fetchProducts, fetchFilteredProducts} from '@/app/lib/data';
 
-export default async function CardWrapper() {
-  const products = await fetchProducts();
+export default async function CardWrapper({ query }: { query?: string }) {
+  //const products = await fetchProducts();
+  const filteredProducts = await fetchFilteredProducts(query);
 
   return (
     <>
-    {products.map((product) => (
+    {filteredProducts.map((product) => (
       <Card
         key={product.id}
         title={product.name}
@@ -38,7 +39,6 @@ export async function Card
 }) 
 {
   // const Icon = iconMap[type];
-  const products = await fetchProducts();
 
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
